@@ -19,18 +19,21 @@ public class AppConfig {
   public MemberService memberService() {
     // 생성자를 통해 repository를 분리하였다.
     // 생성자 주입
+    System.out.println("call AppConfig.memberService");
     return new MemberServiceImpl(memberRepository());
   }
 
   @Bean
-  private static MemberRepository memberRepository() {
+  public MemberRepository memberRepository() {
     // 장점 : 생성자 주입 인터페이스가 한 눈에 보인다. 그리고 중복되는 부분이 없앨 수 있음
     // 이 코드만 수정하면 된다. => 편리하다.
+    System.out.println("call AppConfig.memberRepository");
     return new MemoryMemberRepository();
   }
 
   @Bean
   public OrderService orderService() {
+    System.out.println("call AppConfig.orderService");
     return new OrderServiceImpl(memberRepository(), discountPolicy());
   }
 
