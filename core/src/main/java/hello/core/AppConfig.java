@@ -9,12 +9,14 @@ import hello.core.member.MemberServiceImpl;
 import hello.core.member.MemoryMemberRepository;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
-
+// 의존관계 자동 주입
+//  @Autowired MemberRepository memberRepository;
   @Bean
   public MemberService memberService() {
     // 생성자를 통해 repository를 분리하였다.
