@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
-// 의존관계 자동 주입
+  // 의존관계 자동 주입
 //  @Autowired MemberRepository memberRepository;
   @Bean
   public MemberService memberService() {
@@ -36,7 +36,8 @@ public class AppConfig {
   @Bean
   public OrderService orderService() {
     System.out.println("call AppConfig.orderService");
-    return new OrderServiceImpl(memberRepository(), discountPolicy());
+//    return new OrderServiceImpl(memberRepository(), discountPolicy());
+    return null;
   }
 
   @Bean
