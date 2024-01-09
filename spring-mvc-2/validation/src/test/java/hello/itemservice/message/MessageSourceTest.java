@@ -1,6 +1,5 @@
 package hello.itemservice.message;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,23 +24,22 @@ public class MessageSourceTest {
 
     @Test
     void notFoundMessageCode() {
-        assertThatThrownBy(() -> ms.getMessage("no-code", null, null))
+        assertThatThrownBy(() -> ms.getMessage("no_code", null, null))
                 .isInstanceOf(NoSuchMessageException.class);
     }
 
     @Test
     void notFoundMessageCodeDefaultMessage() {
-        // 메시지를 찾지 못할경우 defaultMessage 값을 반환한다.
-        String result = ms.getMessage("no-code", null, "기본 메시지", null);
+        String result = ms.getMessage("no_code", null, "기본 메시지", null);
         assertThat(result).isEqualTo("기본 메시지");
     }
 
     @Test
     void argumentMessage() {
-        String message = ms.getMessage("hello.name", new Object[]{"Spring"}, null);
-        assertThat(message).isEqualTo("안녕 Spring");
+        String result = ms.getMessage("hello.name", new Object[]{"Spring"}, null);
+        assertThat(result).isEqualTo("안녕 Spring");
     }
-    
+
     @Test
     void defaultLang() {
         assertThat(ms.getMessage("hello", null, null)).isEqualTo("안녕");
